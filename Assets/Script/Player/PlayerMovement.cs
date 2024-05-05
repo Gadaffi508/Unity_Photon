@@ -1,39 +1,34 @@
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed;
-        
-        private Rigidbody _rb;
-        private float _x, _y;
-        private Vector3 _dir = Vector3.zero;
+        public TextMeshProUGUI playerName;
+        public int playerindeks;
         private PhotonView _view;
 
         private void Start()
         {
             _view = GetComponent<PhotonView>();
+            playerindeks = PhotonHandler.player.Count;
+            PhotonHandler.player.Add(this.gameObject);
             
             if(!_view.IsMine) return;
-            
-            _rb = GetComponent<Rigidbody>();
-        } 
 
-        private void Update()
-        {
-            if(!_view.IsMine) return;
-            _x = Input.GetAxis("Horizontal");
-            _y = Input.GetAxis("Vertical");
-        }
+            if (PhotonHandler.player.Count > 0)
+            {
+                transform.position = new Vector3(-4,0,0);
+            }
+            else
+            {
+                transform.position = new Vector3(4,0,0);
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
 
-        private void FixedUpdate()
-        {
-            if(!_view.IsMine) return;
-            _dir = new Vector3(_x * Time.deltaTime * speed,0,_y * Time.deltaTime * speed);
-            
-            _rb.velocity = _dir;
+            playerName.text = _view.ViewID.ToString();
         }
     }
 }

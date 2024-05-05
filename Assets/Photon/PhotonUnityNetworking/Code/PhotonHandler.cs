@@ -48,6 +48,7 @@ namespace Photon.Pun
             }
         }
 
+        public static List<GameObject> player = new List<GameObject>();
 
         /// <summary>Limits the number of datagrams that are created in each LateUpdate.</summary>
         /// <remarks>Helps spreading out sending of messages minimally.</remarks>

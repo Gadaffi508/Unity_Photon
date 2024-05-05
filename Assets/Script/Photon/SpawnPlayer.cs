@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using Photon.Pun;
-using Random = UnityEngine.Random;
 
 namespace Photon.SpawnPlayers
 {
@@ -9,13 +7,9 @@ namespace Photon.SpawnPlayers
     {
         public GameObject player;
 
-        public float minX, maxX, minZ, maxZ;
-
         private void Start()
         {
-            Vector3 randomPos = new Vector3(Random.Range(minX,maxX),1,Random.Range(minZ,maxZ));
-
-            PhotonNetwork.Instantiate(player.name, randomPos, Quaternion.identity);
+            PhotonNetwork.Instantiate(player.name, Vector3.one, Quaternion.identity);
         }
     }
 }

@@ -18,6 +18,11 @@ namespace Photon.CreateAndJoinRoom
             PhotonNetwork.JoinRoom(joinIF.text);
         }
 
+        public void RandomRoom()
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+
         public override void OnJoinedRoom()
         {
             PhotonNetwork.LoadLevel("GameScene");
