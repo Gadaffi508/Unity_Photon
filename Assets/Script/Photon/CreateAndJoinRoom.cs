@@ -1,5 +1,6 @@
 using Photon.Pun;
 using TMPro;
+using UnityEngine;
 
 namespace Photon.CreateAndJoinRoom
 {
@@ -8,14 +9,32 @@ namespace Photon.CreateAndJoinRoom
         public TMP_InputField createIF;
         public TMP_InputField joinIF;
 
+        public TMP_Text warnıngText;
+
         public void CreateRoom()
         {
-            PhotonNetwork.CreateRoom(createIF.text);
+            if (createIF.text == "")
+            {
+                warnıngText.gameObject.SetActive(true);
+                warnıngText.text = "Please enter room name";
+            }
+            else
+            {
+                PhotonNetwork.CreateRoom(createIF.text);
+            }
         }
         
         public void JoinRoom()
         {
-            PhotonNetwork.JoinRoom(joinIF.text);
+            if (joinIF.text == "")
+            {
+                warnıngText.gameObject.SetActive(true);
+                warnıngText.text = "Please enter room name";
+            }
+            else
+            {
+                PhotonNetwork.JoinRoom(joinIF.text);
+            }
         }
 
         public void RandomRoom()
@@ -25,7 +44,15 @@ namespace Photon.CreateAndJoinRoom
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel("GameScene");
+            if (PhotonNetwork.CurrentRoom.PlayerCount<3)
+            {
+                PhotonNetwork.LoadLevel("GameScene");
+            }
+            else
+            {
+                warnıngText.gameObject.SetActive(true);
+                warnıngText.text = "Room is full";
+            }
         }
     }
 }

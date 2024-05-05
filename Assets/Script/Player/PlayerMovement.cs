@@ -1,34 +1,34 @@
+using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
         public TextMeshProUGUI playerName;
-        public int playerindeks;
         private PhotonView _view;
 
         private void Start()
         {
             _view = GetComponent<PhotonView>();
-            playerindeks = PhotonHandler.player.Count;
+            if(_view.IsMine is false) return;
             PhotonHandler.player.Add(this.gameObject);
             
-            if(!_view.IsMine) return;
+            GetComponent<MeshRenderer>().material.color = Color.red;
 
-            if (PhotonHandler.player.Count > 0)
-            {
-                transform.position = new Vector3(-4,0,0);
-            }
-            else
-            {
-                transform.position = new Vector3(4,0,0);
-                transform.rotation = Quaternion.Euler(0,180,0);
-            }
+            playerName.text = "me";
+        }
 
-            playerName.text = _view.ViewID.ToString();
+        private void Update()
+        {
+            if(_view.IsMine is false) return;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0,1,0,1);
+            }
         }
     }
 }
