@@ -4,25 +4,18 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Player
+namespace Player.Movement
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : Player
     {
         public TextMeshProUGUI playerName;
-        private PhotonView _view;
-
-        private void Start()
+        public override void Starts()
         {
-            _view = GetComponent<PhotonView>();
-            if(_view.IsMine is false) return;
-            PhotonHandler.player.Add(this.gameObject);
-            
-            GetComponent<MeshRenderer>().material.color = Color.red;
-
+            playerName.gameObject.SetActive(true);
             playerName.text = "me";
         }
-
-        private void Update()
+        
+        public override void Updates()
         {
             if(_view.IsMine is false) return;
             if (Input.GetKeyDown(KeyCode.Space))
