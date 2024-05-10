@@ -3,6 +3,7 @@ using UnityEngine;
 public class Testing
 {
     public const int value = 3;
+
     /// <summary Const----->
     /// Bir alanın derleme zamanında sabit değerle atanmasını sağlar.
     /// (Allows a field to be assigned with a constant value at compile time.)
