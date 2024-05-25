@@ -10,6 +10,9 @@ Library: C:\UnityProjects\PhotonProject\Unity_Photon\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CFXRDemo;
+--assembly-defines=CFXRRuntime;
+--assembly-defines=KinoBloom.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=netstandard;
@@ -87,6 +90,9 @@ Library: C:\UnityProjects\PhotonProject\Unity_Photon\Temp\BurstOutput\Data\Plugi
 --target-framework=NetFramework
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CFXRDemo;
+--assembly-defines=CFXRRuntime;
+--assembly-defines=KinoBloom.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=netstandard;
@@ -162,6 +168,9 @@ Library: C:\UnityProjects\PhotonProject\Unity_Photon\Temp\BurstOutput\Data\Plugi
 --float-precision=Standard
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CFXRDemo;
+--assembly-defines=CFXRRuntime;
+--assembly-defines=KinoBloom.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=netstandard;
@@ -322,6 +331,9 @@ Library: C:\UnityProjects\PhotonProject\Unity_Photon\Temp\BurstOutput\Data\Plugi
 --float-precision=Standard
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CFXRDemo;
+--assembly-defines=CFXRRuntime;
+--assembly-defines=KinoBloom.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=netstandard;
