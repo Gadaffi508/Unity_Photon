@@ -39,7 +39,7 @@ public class PlayerMovementExample : MonoBehaviour
         }
         if (_jumping)
         {
-            _rb.velocity = new Vector3(_rb.velocity.x,jumpHeight,_rb.velocity.z);
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x,jumpHeight,_rb.linearVelocity.z);
             _grounded = false;
         }
         else _rb.AddForce(CalculateMovement(_sprinting ? sprintSpeed : walkSpeed), ForceMode.VelocityChange);
@@ -51,7 +51,7 @@ public class PlayerMovementExample : MonoBehaviour
         _targetVelocity = transform.TransformDirection(_targetVelocity);
         _targetVelocity *= speed;
 
-        Vector3 velocity = _rb.velocity;
+        Vector3 velocity = _rb.linearVelocity;
         if (_input.magnitude > 0.5f)
         {
             Vector3 velocityChange = _targetVelocity - velocity;
