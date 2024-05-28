@@ -15,8 +15,11 @@ namespace Entities
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
+            state.Enabled = false;
+            return;
+            /*
             foreach ((RefRW<LocalTransform> localTransfom, RefRO<RotateSpeed> rotateSpeed) 
-                in SystemAPI.Query<RefRW<LocalTransform>,RefRO <RotateSpeed>>())
+                in SystemAPI.Query<RefRW<LocalTransform>,RefRO <RotateSpeed>>().WithAll<RotatingCube>())
             {
                 float power = 1f;
 
@@ -28,8 +31,17 @@ namespace Entities
 
                 localTransfom.ValueRW = localTransfom.ValueRW.RotateY(rotateSpeed.ValueRO.value * SystemAPI.Time.DeltaTime * power);
             }
+            */
+            RotatingCubeJop rotatingCubeJop = new RotatingCubeJop
+            {
+                deltaTime = SystemAPI.Time.DeltaTime
+            };
+
+            rotatingCubeJop.ScheduleParallel();
         }
 
+        [BurstCompile]
+        [WithNone(typeof(RotatingCube))]
         public partial struct RotatingCubeJop : IJobEntity
         {
             public float deltaTime;
